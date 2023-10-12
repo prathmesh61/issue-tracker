@@ -1,9 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/base/Header";
-const dm_sans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Issue Tracker",
@@ -16,13 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={dm_sans.className}>
+    <html lang="en">
+      <ClerkProvider>
+        <body>
           <Header />
           {children}
         </body>
-      </html>
-    </ClerkProvider>
+      </ClerkProvider>
+    </html>
   );
 }

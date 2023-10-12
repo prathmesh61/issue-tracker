@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;800&family=Manrope:wght@600&family=Montserrat:wght@400;600;700;900&family=Outfit:wght@300;500;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   background-color: #f9fafb;
+  font-family: "Montserrat", sans-serif;
 }
