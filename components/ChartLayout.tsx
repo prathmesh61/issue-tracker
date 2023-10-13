@@ -2,7 +2,8 @@
 import Issue from "@/app/(pages)/issue/page";
 import { useFetch } from "@/hooks/useFetch";
 import { IssueType } from "@/utils/types";
-import { BarChart, Bar, Cell, XAxis, YAxis } from "recharts";
+import { BarChart, Bar, Cell, XAxis, YAxis, Tooltip } from "recharts";
+import Spinner from "./common/Spinner";
 
 const datas = [
   {
@@ -56,13 +57,27 @@ const ChartLayout = () => {
     const valueIfExsist = acc[key] || 0;
     return { ...acc, [key]: valueIfExsist + 1 };
   }, {});
-
+  // Convert the result into an array
+  const prorityArrayAsArray = prorityArray
+    ? Object.entries(prorityArray).map(([key, value]) => ({
+        order: key,
+        count: value,
+      }))
+    : [];
+  if (loading) {
+    return (
+      <>
+        <Spinner />
+      </>
+    );
+  }
   return (
-    <div className="w-full h-full relative">
-      <BarChart width={450} height={500} data={datas}>
+    <div className="w-full h-full relative border-2 border-zinc-300 rounded-lg p-2">
+      <BarChart width={450} height={500} data={prorityArrayAsArray}>
         <YAxis />
         <XAxis />
-        <Bar dataKey="uv" fill="#8884d8" />
+        <Tooltip />
+        <Bar dataKey="count" fill="#8884d8" />
       </BarChart>
     </div>
   );

@@ -13,3 +13,7 @@ export type IssueType = {
   email: string;
   id: number;
 };
+
+type IPrority = {
+  order: string;
+};
