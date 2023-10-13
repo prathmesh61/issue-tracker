@@ -2,7 +2,16 @@
 import Issue from "@/app/(pages)/issue/page";
 import { useFetch } from "@/hooks/useFetch";
 import { IssueType } from "@/utils/types";
-import { BarChart, Bar, Cell, XAxis, YAxis, Tooltip } from "recharts";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+} from "recharts";
 import Spinner from "./common/Spinner";
 
 const datas = [
@@ -74,10 +83,12 @@ const ChartLayout = () => {
   return (
     <div className="w-full h-full relative border-2 border-zinc-300 rounded-lg p-2">
       <BarChart width={450} height={500} data={prorityArrayAsArray}>
-        <YAxis />
-        <XAxis />
+        <Bar dataKey="count" fill="#9333EA" />
+        <YAxis dataKey="count" />
+        <XAxis dataKey="order" />
         <Tooltip />
-        <Bar dataKey="count" fill="#8884d8" />
+        <Legend />
+        <CartesianGrid />
       </BarChart>
     </div>
   );
