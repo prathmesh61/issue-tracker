@@ -12,10 +12,10 @@ datasource db {
 model Issue {
   id    Int     @id @default(autoincrement())
   email String  @unique
-  title  String
-  description String
-  attachment  String
- order Order
+  title  String @db.VarChar(255)
+  description String  @db.Text
+  link  String
+ order Order  @default(NORMAL)
 }
 
 enum Order {

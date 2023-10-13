@@ -1,31 +1,61 @@
+"use client";
+import { useState } from "react";
+import { useUser } from "@clerk/nextjs";
 import Input from "@/components/common/Input";
 import Button from "@/components/common/Button";
-import DropDown from "@/components/common/DropDown";
-type Props = {};
+import Textarea from "@/components/common/Textarea";
+import Dropdown from "@/components/common/Dropdown";
+import axios from "axios";
 
-const FormLayout = (props: Props) => {
+const FormLayout = () => {
+  const [title, setTitle] = useState<string>();
+  const [description, setDescription] = useState<string>();
+  const [link, setLink] = useState<string>();
+  const [prority, setPrority] = useState<"NORMAL" | "MEDIUM" | "HIGH">(
+    "NORMAL"
+  );
+  const { user } = useUser();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const body = {
+      title,
+      description,
+      link,
+      email: user?.primaryEmailAddress?.emailAddress,
+    };
+    try {
+      const { data } = await axios.post("/api/issues", body);
+      console.log(data);
+    } catch (error) {
+      alert("somthing wrong..");
+    }
+  };
+  console.log(user?.primaryEmailAddress?.emailAddress);
+
   return (
-    <form className="flex flex-col items-start gap-8 mt-10 w-[500px]">
+    <form
+      className="flex flex-col items-start gap-8 mt-10 w-[500px]"
+      onSubmit={handleSubmit}
+    >
       <Input
         lable="Title"
         placeholder="give title for bug..."
         type="text"
-        componentType
+        setvalue={setTitle}
       />
-      <Input
+      <Textarea
         lable="Description"
         placeholder="give detail description for bug..."
-        type="text"
-        componentType={false}
+        setvalue={setDescription}
       />
-      <DropDown />
+      <Dropdown setvalue={setPrority} />
       <Input
         lable="Link"
         placeholder="www.buglink.com"
         type="text"
-        componentType
+        setvalue={setLink}
       />
-      <Button text="Continue..." type="submit" />
+      <Button text="Continue" type="submit" />
     </form>
   );
 };

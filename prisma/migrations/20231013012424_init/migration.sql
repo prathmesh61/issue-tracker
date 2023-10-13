@@ -5,10 +5,10 @@ CREATE TYPE "Order" AS ENUM ('NORMAL', 'MEDIUM', 'HIGH');
 CREATE TABLE "Issue" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
-    "title" TEXT NOT NULL,
+    "title" VARCHAR(255) NOT NULL,
     "description" TEXT NOT NULL,
-    "attachment" TEXT NOT NULL,
-    "order" "Order" NOT NULL,
+    "link" TEXT NOT NULL,
+    "order" "Order" NOT NULL DEFAULT 'NORMAL',
 
     CONSTRAINT "Issue_pkey" PRIMARY KEY ("id")
 );
