@@ -1,12 +1,8 @@
 import DashbordLayout from "@/components/DashbordLayout";
 
-type Props = {};
-
 const Dashbord = ({
-  params,
   searchParams,
 }: {
-  params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   return (
