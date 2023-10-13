@@ -14,4 +14,4 @@ CREATE TABLE "Issue" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Issue_email_key" ON "Issue"("email");
+CREATE UNIQUE INDEX "Issue_id_key" ON "Issue"("id");

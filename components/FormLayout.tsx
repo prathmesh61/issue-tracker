@@ -8,13 +8,13 @@ import Dropdown from "@/components/common/Dropdown";
 import axios from "axios";
 
 const FormLayout = () => {
+  const { user } = useUser();
   const [title, setTitle] = useState<string>();
   const [description, setDescription] = useState<string>();
   const [link, setLink] = useState<string>();
   const [prority, setPrority] = useState<"NORMAL" | "MEDIUM" | "HIGH">(
     "NORMAL"
   );
-  const { user } = useUser();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const body = {
@@ -22,15 +22,15 @@ const FormLayout = () => {
       description,
       link,
       email: user?.primaryEmailAddress?.emailAddress,
+      prority,
     };
     try {
-      const { data } = await axios.post("/api/issues", body);
-      console.log(data);
+      await axios.post("/api/issues", body);
     } catch (error) {
       alert("somthing wrong..");
     }
   };
-  console.log(user?.primaryEmailAddress?.emailAddress);
+  console.log(user);
 
   return (
     <form

@@ -6,12 +6,14 @@ type IssueBody = {
   description: string;
   link: string;
   email: string;
+  prority: "NORMAL" | "MEDIUM" | "HIGH";
 };
 const createIssueSchema = z.object({
   title: z.string().min(1, "Title is required").max(255),
   description: z.string().min(1, "Description is required"),
-  email: z.string().email("Invalid email"),
+  email: z.string(),
   link: z.string(),
+  prority: z.enum(["NORMAL", "MEDIUM", "HIGH"]).default("NORMAL"),
 });
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const body: IssueBody = await req.json();
@@ -27,6 +29,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         description: body.description,
         link: body.link,
         email: body.email,
+        order: body.prority,
       },
     });
     return NextResponse.json(newIssue, { status: 201 });
