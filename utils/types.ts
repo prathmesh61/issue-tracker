@@ -9,7 +9,7 @@ export type IssueType = {
   description: string;
   title: string;
   link: string;
-  prority: string;
+  order: string;
   email: string;
   id: number;
 };

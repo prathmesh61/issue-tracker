@@ -4,17 +4,21 @@ import React from "react";
 type Props = {};
 const Header = ({}: Props) => {
   return (
-    <header className="px-8 py-2">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <header className="px-4 py-2">
+      <div className="max-w-7xl mx-auto flex  items-center justify-between gap-4">
         <div className="flex items-center justify-center gap-x-10 ">
           <Link
             href={"/"}
-            className="text-2xl font-bold bg-purple-400 px-4 rounded-md text-white"
+            className="text-md md:text-xl whitespace-nowrap font-medium font-mono bg-purple-600 px-4 rounded-md text-white"
           >
-            IManager
+            +Bug-Manager
           </Link>
-          <Link href={"/dashbord"}>Dashbord</Link>
-          <Link href={"/issue"}>Issue</Link>
+          <Link href={"/dashbord"} className="text-sm font-light">
+            Dashbord
+          </Link>
+          <Link href={"/issue"} className="text-sm font-light">
+            Issue
+          </Link>
         </div>
         <UserButton afterSignOutUrl="/" />
       </div>

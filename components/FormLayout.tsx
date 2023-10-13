@@ -6,6 +6,8 @@ import Button from "@/components/common/Button";
 import Textarea from "@/components/common/Textarea";
 import Dropdown from "@/components/common/Dropdown";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const FormLayout = () => {
   const { user } = useUser();
@@ -15,6 +17,7 @@ const FormLayout = () => {
   const [prority, setPrority] = useState<"NORMAL" | "MEDIUM" | "HIGH">(
     "NORMAL"
   );
+  const router = useRouter();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const body = {
@@ -26,11 +29,12 @@ const FormLayout = () => {
     };
     try {
       await axios.post("/api/issues", body);
+      toast.success("created issue");
+      router.push("/dashbord");
     } catch (error) {
-      alert("somthing wrong..");
+      toast.warning("Try Again.");
     }
   };
-  console.log(user);
 
   return (
     <form

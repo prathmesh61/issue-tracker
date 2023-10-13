@@ -1,10 +1,11 @@
+import { IssueType } from "@/utils/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const useFetch = (apiUrl: string) => {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [data, setData] = useState<IssueType[] | undefined>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
 
   const fetchData = async () => {
     try {
