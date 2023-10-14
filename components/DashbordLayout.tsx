@@ -24,9 +24,12 @@ const DashbordLayout = ({
     );
   } else if (error) {
     return (
-      <p className="bg-red-400 text-white rounded-md p-2 mt-4">
-        Please Try Again...
-      </p>
+      <Link
+        href={"/"}
+        className="bg-red-400 text-white text-xs rounded-md p-2 mt-4"
+      >
+        Click here for better experience...
+      </Link>
     );
   }
   return (

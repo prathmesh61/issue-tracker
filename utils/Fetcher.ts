@@ -16,3 +16,20 @@ export const displayDataByFilterPrority = (
   }
   return arr;
 };
+
+export const chartDynamicData = (data: IssueType[]) => {
+  const prorityObjWithKeyValue = data?.reduce((acc: any, curr: IssueType) => {
+    const key = curr.order;
+    const valueIfExsist = acc[key] || 0;
+    return { ...acc, [key]: valueIfExsist + 1 };
+  }, {});
+  // Convert the result into an array
+  const prorityObjAsArray = prorityObjWithKeyValue
+    ? Object.entries(prorityObjWithKeyValue)?.map(([key, value]) => ({
+        order: key,
+        count: value,
+      }))
+    : [];
+
+  return { prorityObjAsArray };
+};

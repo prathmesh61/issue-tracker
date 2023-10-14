@@ -14,6 +14,7 @@ export type IssueType = {
   id: number;
 };
 
-type IPrority = {
+export type TypeChartPrority = Array<{
   order: string;
-};
+  count: number;
+}>;
