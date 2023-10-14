@@ -16,7 +16,7 @@ export const useFetch = (apiUrl: string) => {
       setLoading(false);
     } catch (error) {
       setError(true);
-      console.log(error);
+      router.refresh();
     } finally {
       setLoading(false);
       router.refresh();
