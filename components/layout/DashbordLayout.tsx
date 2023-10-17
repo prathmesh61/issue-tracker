@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import Modal from "./common/Modal";
+import Modal from "../common/Modal";
 import { useFetch } from "@/hooks/useFetch";
-import Spinner from "./common/Spinner";
+import Spinner from "../common/Spinner";
 import { IssueType } from "@/utils/types";
 import { displayDataByFilterPrority, filterPrority } from "@/utils/Fetcher";
 import Link from "next/link";

@@ -1,6 +1,6 @@
-import CallToAction from "@/components/CallToAction";
-import ChartLayout from "@/components/ChartLayout";
-import PreviousIssueLayout from "@/components/PreviousIssueLayout";
+import CallToAction from "@/components/base/CallToAction";
+import ChartLayout from "@/components/layout/ChartLayout";
+import PreviousIssueLayout from "@/components/layout/PreviousIssueLayout";
 import Footer from "@/components/base/Footer";
 
 export default function Home() {

@@ -11,9 +11,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { chartDynamicData } from "@/utils/Fetcher";
-import ChartSpinner from "./common/ChartSpinner";
+import ChartSpinner from "../common/ChartSpinner";
 import Link from "next/link";
-import IssueProrityLayout from "./common/IssueProrityLayout";
+import IssueProrityLayout from "../common/IssueProrityLayout";
 
 const ChartLayout = () => {
   const { data, error, loading } = useFetch("/api/get-issues");

@@ -1,7 +1,7 @@
 "use client";
 import { useFetch } from "@/hooks/useFetch";
 import React from "react";
-import ListSpinner from "./common/ListSpinner";
+import ListSpinner from "../common/ListSpinner";
 import Link from "next/link";
 import { IssueType } from "@/utils/types";
 

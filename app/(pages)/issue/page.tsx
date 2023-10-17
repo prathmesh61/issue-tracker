@@ -1,4 +1,4 @@
-import FormLayout from "@/components/FormLayout";
+import FormLayout from "@/components/layout/FormLayout";
 import React from "react";
 
 const Issue = () => {

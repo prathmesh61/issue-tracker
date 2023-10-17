@@ -1,4 +1,4 @@
-import DashbordLayout from "@/components/DashbordLayout";
+import DashbordLayout from "@/components/layout/DashbordLayout";
 
 const Dashbord = ({
   searchParams,
