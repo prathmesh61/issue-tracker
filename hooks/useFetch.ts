@@ -1,4 +1,5 @@
 import { IssueType } from "@/utils/types";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -10,8 +11,7 @@ export const useFetch = (apiUrl: string) => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const res = await fetch(apiUrl);
-      const data = await res.json();
+      const { data } = await axios(apiUrl);
       setData(data);
       setLoading(false);
     } catch (error) {
@@ -22,7 +22,6 @@ export const useFetch = (apiUrl: string) => {
       router.refresh();
     }
   };
-
   useEffect(() => {
     fetchData();
   }, [apiUrl]);
