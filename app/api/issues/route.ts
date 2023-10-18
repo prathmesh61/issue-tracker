@@ -1,6 +1,7 @@
 import prisma from "@/prisma/client";
+import { formSchema } from "@/utils/validation/formSchema";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+
 type IssueBody = {
   title: string;
   description: string;
@@ -8,16 +9,10 @@ type IssueBody = {
   email: string;
   prority: "NORMAL" | "MEDIUM" | "HIGH";
 };
-const createIssueSchema = z.object({
-  title: z.string().min(1, "Title is required").max(255),
-  description: z.string().min(1, "Description is required"),
-  email: z.string(),
-  link: z.string(),
-  prority: z.enum(["NORMAL", "MEDIUM", "HIGH"]).default("NORMAL"),
-});
+
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const body: IssueBody = await req.json();
-  const validation = createIssueSchema.safeParse(body);
+  const validation = formSchema.safeParse(body);
   if (!validation.success) {
     return NextResponse.json(validation.error.errors, { status: 400 });
   }

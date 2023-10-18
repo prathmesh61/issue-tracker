@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <div className="w-full h-fit p-2 text-center bg-black text-white flex flex-col items-center justify-center">
       <p className="text-sm font-mono">
