@@ -33,7 +33,7 @@ const DashbordLayout = ({
     );
   }
   return (
-    <div className="flex flex-col gap-8">
+    <section className="flex flex-col gap-8">
       <div className="flex gap-2 ">
         <Link
           href={`/dashbord`}
@@ -56,7 +56,7 @@ const DashbordLayout = ({
           <Modal issue={issue} key={issue.id} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

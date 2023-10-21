@@ -35,7 +35,7 @@ const ChartLayout = () => {
     );
   }
   return (
-    <div className="w-full h-full flex flex-col  gap-5">
+    <section className="w-full h-full flex flex-col  gap-5">
       {/* @ts-ignore */}
       <IssueProrityLayout prorityObjAsArray={prorityObjAsArray} />
       <div className="w-[450px] h-[500px] relative border-2 border-zinc-300 rounded-lg p-2">
@@ -50,7 +50,7 @@ const ChartLayout = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </section>
   );
 };
 

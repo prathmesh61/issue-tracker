@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const CallToAction = () => {
   return (
-    <div className="flex flex-wrap gap-3 bg-purple-500 p-7 items-center justify-around">
+    <section className="flex flex-wrap gap-3 bg-purple-500 p-7 items-center justify-around">
       <h2 className="text-md font-bold  text-white text-center">
         A simple, fast and scalable bug tracking system that helps you manage
         <br />
@@ -15,7 +15,7 @@ const CallToAction = () => {
       >
         Dashbord
       </Link>
-    </div>
+    </section>
   );
 };
 
