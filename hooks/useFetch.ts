@@ -19,11 +19,10 @@ export const useFetch = (apiUrl: string) => {
       router.refresh();
     } finally {
       setLoading(false);
-      router.refresh();
     }
   };
   useEffect(() => {
     fetchData();
-  }, [apiUrl]);
+  }, []);
   return { data, error, loading };
 };
