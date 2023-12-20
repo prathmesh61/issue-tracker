@@ -1,5 +1,3 @@
-"use client";
-
 import { IssueType } from "./types";
 
 export const filterPrority = (arr: IssueType[]) => {
