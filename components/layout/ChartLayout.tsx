@@ -1,5 +1,6 @@
 "use client";
 import { useFetch } from "@/hooks/useFetch";
+import { chartDynamicData } from "@/utils/Fetcher";
 import {
   BarChart,
   Bar,
@@ -10,7 +11,6 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import { chartDynamicData } from "@/utils/Fetcher";
 import ChartSpinner from "../common/ChartSpinner";
 import Link from "next/link";
 import IssueProrityLayout from "../common/IssueProrityLayout";
@@ -18,6 +18,9 @@ import IssueProrityLayout from "../common/IssueProrityLayout";
 const ChartLayout = () => {
   const { data, error, loading } = useFetch("/api/get-issues");
   const { prorityObjAsArray } = chartDynamicData(data!);
+  console.log(prorityObjAsArray);
+  console.log(data);
+
   if (loading) {
     return (
       <>
@@ -28,7 +31,7 @@ const ChartLayout = () => {
     return (
       <Link
         href={"/dashbord"}
-        className="bg-red-400 text-white text-xs rounded-md p-2 mt-4"
+        className="bg-blue-400 w-fit text-white text-xs rounded-md p-2 mt-4"
       >
         Click here for better experience...
       </Link>

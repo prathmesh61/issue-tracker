@@ -17,7 +17,7 @@ const PreviousIssueLayout = () => {
     return (
       <Link
         href={"/dashbord"}
-        className="bg-red-400 text-white text-xs rounded-md p-2 mt-4"
+        className="bg-blue-400 w-fit text-white text-xs rounded-md p-2 mt-4"
       >
         Click here for better experience...
       </Link>
@@ -28,7 +28,10 @@ const PreviousIssueLayout = () => {
       <h1 className="text-xl font-bold ">Latest Issue</h1>
       <div className=" flex flex-col gap-5 items-start mt-5">
         {data?.slice(0, 6).map((issue: IssueType) => (
-          <div className="flex flex-col border-b-2 space-y-2 p-2 border-zinc-300 w-full last-of-type:border-none">
+          <div
+            key={issue.id}
+            className="flex flex-col border-b-2 space-y-2 p-2 border-zinc-300 w-full last-of-type:border-none"
+          >
             <p className="text-sm  font-medium">{issue.title}</p>
             <p
               className={`text-xs whitespace-nowrap font-medium w-fit py-1 px-2 rounded-md mb-4 ${

@@ -1,5 +1,4 @@
 import { IssueType } from "@/utils/types";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -11,7 +10,8 @@ export const useFetch = (apiUrl: string) => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const { data } = await axios(apiUrl);
+      const response = await fetch(apiUrl);
+      const data = await response.json();
       setData(data);
       setLoading(false);
     } catch (error) {
