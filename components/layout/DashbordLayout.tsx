@@ -4,7 +4,6 @@ import Modal from "../common/Modal";
 import { useFetch } from "@/hooks/useFetch";
 import Spinner from "../common/Spinner";
 import { IssueType } from "@/utils/types";
-import { displayDataByFilterPrority, filterPrority } from "@/utils/Fetcher";
 import Link from "next/link";
 
 const DashbordLayout = ({
@@ -13,8 +12,25 @@ const DashbordLayout = ({
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   const { data, error, loading } = useFetch("/api/get-issues");
-  const prorityFilterLable: string[] = filterPrority(data!);
+
+  // Display data filtering by Prority else display all data
+  const displayDataByFilterPrority = (
+    arr: IssueType[],
+    searchParams: { [key: string]: string | string[] | undefined }
+  ) => {
+    if (searchParams["prority"]) {
+      return arr?.filter((item) => item.order === searchParams["prority"]);
+    }
+    return arr;
+  };
   const prorityFilterArrData = displayDataByFilterPrority(data!, searchParams);
+
+  //  remove duplicate ProrityType from order aree
+  const filterPrority = (arr: IssueType[]) => {
+    let orderArr = arr?.map((item) => item.order);
+    return orderArr?.filter((item, index) => orderArr.indexOf(item) === index);
+  };
+  const prorityFilterLable: string[] = filterPrority(data!);
 
   if (loading) {
     return (

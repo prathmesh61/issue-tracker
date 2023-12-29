@@ -2,12 +2,12 @@ import { TypeChartPrority } from "@/utils/types";
 import React from "react";
 
 type Props = {
-  prorityObjAsArray: TypeChartPrority;
+  prorityCount: TypeChartPrority;
 };
-const IssueProrityLayout = ({ prorityObjAsArray }: Props) => {
+const IssueProrityCountBox = ({ prorityCount }: Props) => {
   return (
     <div className="flex flex-wrap gap-3">
-      {prorityObjAsArray?.map((item) => (
+      {prorityCount?.map((item) => (
         <div
           key={item.order}
           className={`border-2 flex flex-col items-center w-20 border-zinc-300 p-2 rounded-lg cursor-pointer ${
@@ -26,4 +26,4 @@ const IssueProrityLayout = ({ prorityObjAsArray }: Props) => {
   );
 };
 
-export default IssueProrityLayout;
+export default IssueProrityCountBox;

@@ -24,7 +24,7 @@ const PreviousIssueLayout = () => {
     );
   }
   return (
-    <section className="w-fit h-full flex flex-col border-2 border-zinc-300 rounded-lg p-2">
+    <section className="w-full h-full flex flex-col border-2 border-zinc-300 rounded-lg p-2">
       <h1 className="text-xl font-bold ">Latest Issue</h1>
       <div className=" flex flex-col gap-5 items-start mt-5">
         {data?.slice(0, 6).map((issue: IssueType) => (
