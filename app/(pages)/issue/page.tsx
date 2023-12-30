@@ -8,8 +8,8 @@ const Issue = () => {
       <h1 className="text-2xl whitespace-nowrap font-bold font-mono text-zinc-500">
         Tell About The Bug Here...!
       </h1>
-      {/* <FormLayout /> */}
-      <Form />
+      <FormLayout />
+      {/* <Form /> */}
     </section>
   );
 };

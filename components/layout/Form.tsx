@@ -20,6 +20,7 @@ const Form: FC = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isLoading },
   } = useForm<FormData>();
 
@@ -31,6 +32,7 @@ const Form: FC = () => {
       email: user?.primaryEmailAddress?.emailAddress,
       priority: data.priority,
     };
+    console.log(data, body);
 
     try {
       await axios.post("/api/issues", body);
@@ -40,6 +42,7 @@ const Form: FC = () => {
       toast.warning("Try Again.");
     }
   };
+  console.log(watch("priority"));
 
   return (
     <form
