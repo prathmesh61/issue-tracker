@@ -9,9 +9,7 @@ type Props = {
 const Textarea = ({ lable, placeholder, setvalue }: Props) => {
   return (
     <div className="flex flex-col gap-2 w-full ">
-      <label htmlFor="description" className="text-md font-medium">
-        {lable} :-
-      </label>
+      <label htmlFor="description"> {lable} :-</label>
       <textarea
         rows={5}
         cols={50}
