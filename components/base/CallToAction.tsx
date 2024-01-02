@@ -13,7 +13,7 @@ const CallToAction = () => {
         href={"/dashbord"}
         className="text-sm bg-black py-1 px-4 text-white w-[150px] text-center rounded-md h-fit"
       >
-        Dashbord
+        dashbord
       </Link>
     </section>
   );
