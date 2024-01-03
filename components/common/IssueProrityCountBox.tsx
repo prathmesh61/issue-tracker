@@ -8,7 +8,7 @@ const IssueProrityCountBox = ({ prorityCount }: Props) => {
   return (
     <div className="flex flex-wrap gap-3">
       {prorityCount &&
-        prorityCount?.map((item) => (
+        Array.from(prorityCount)?.map((item) => (
           <div
             key={item.order}
             className={`border-2 flex flex-col items-center w-20 border-zinc-300 p-2 rounded-lg cursor-pointer ${
