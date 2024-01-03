@@ -19,7 +19,7 @@ test.beforeEach(async ({ page }) => {
   await page.getByRole("button", { name: "Continue" }).click();
 });
 
-test("home screen after sign in", async ({ page }) => {
+test("should see home screen after sign in", async ({ page }) => {
   // after page is signed in.
   await page.goto(WEB_URL);
   page.getByRole("link", { name: "+Bug-Manager" });

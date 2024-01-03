@@ -8,7 +8,7 @@ const Dashbord = ({
   return (
     <section className="max-w-7xl mx-auto px-4  mt-10">
       <h1 className="text-xl whitespace-nowrap font-bold font-mono text-zinc-500">
-        -Filter,Sort Issue Solve Them.
+        -Filter,Sort
       </h1>
       <div className="mt-10">
         <DashbordLayout searchParams={searchParams} />
