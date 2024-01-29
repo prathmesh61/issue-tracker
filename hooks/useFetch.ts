@@ -8,8 +8,8 @@ export const useFetch = (apiUrl: string) => {
   const [error, setError] = useState<boolean>(false);
   const router = useRouter();
   const fetchData = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       const response = await fetch(apiUrl);
       const data = await response.json();
       setData(data);

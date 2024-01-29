@@ -1,8 +1,7 @@
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import NodeCache from "node-cache";
-
-// node-cache init
+//  node-cache init
 const nodeCache = new NodeCache();
 export const GET = async (req: NextRequest, res: NextResponse) => {
   let issues;
@@ -14,6 +13,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       issues = await prisma.issue.findMany();
       nodeCache.set("issues", issues);
     }
+
     return NextResponse.json(issues);
   } catch (error) {
     return NextResponse.json(error, { status: 500 });
