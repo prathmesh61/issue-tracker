@@ -7,7 +7,6 @@ import { IssueType } from "@/utils/types";
 
 const PreviousIssueLayout = () => {
   const { data, error, loading } = useFetch("/api/get-issues");
-  // const issues=Array.from(data!)?.slice(0, 6) || []
   if (loading) {
     return (
       <>
