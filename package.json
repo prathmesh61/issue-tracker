@@ -2,17 +2,21 @@
   "name": "issue-tracker",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev ",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "graph": "node Graphql/index.js"
   },
   "dependencies": {
+    "@apollo/server": "^4.10.0",
     "@clerk/nextjs": "^4.25.4",
     "@hookform/resolvers": "^3.3.2",
     "@prisma/client": "^5.4.2",
     "axios": "^1.5.1",
+    "graphql": "^16.8.1",
     "next": "13.5.4",
     "node-cache": "^5.1.2",
     "react": "^18",
