@@ -1,7 +1,8 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 import axios from "axios";
-
 // A schema is a collection of type definitions (hence "typeDefs")
 const typeDefs = `#graphql
  # This "Issue" type shape 
@@ -20,14 +21,50 @@ const typeDefs = `#graphql
 }
 type Query {
     issues: [Issue]
+    issueById(id:Int!):Issue
+    allIssueByUser(id:Int!):[Issue]
+    issuesByOrder(order:String!):[Issue]
   }
 `;
 
 // Resolvers define how to fetch the types defined in your schema.
 const resolvers = {
   Query: {
-    issues: async () =>
-      (await axios.get("http://localhost:3000/api/get-issues")).data,
+    issues: async () => await prisma.issue.findMany(),
+    issueById: async (_parent, args) => {
+      return await prisma.issue.findUnique({
+        where: {
+          id: args.id,
+        },
+      });
+    },
+    allIssueByUser: async (_parent, args) => {
+      return await prisma.issue.findFirst({
+        where: {
+          id: args.id,
+        },
+        select: {
+          email,
+          title,
+          description,
+          link,
+          id,
+          order,
+        },
+      });
+    },
+    issuesByOrder: async (_parent, args) => {
+      return await prisma.issue.findUnique({
+        where: {
+          order: args.order,
+        },
+        select: {
+          order,
+          title,
+          description,
+        },
+      });
+    },
   },
 };
 

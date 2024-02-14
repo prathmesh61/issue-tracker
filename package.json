@@ -2,13 +2,11 @@
   "name": "issue-tracker",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "graph": "node Graphql/index.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@apollo/server": "^4.10.0",
