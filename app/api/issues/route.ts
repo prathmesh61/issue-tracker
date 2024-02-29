@@ -36,3 +36,19 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     return NextResponse.json(error, { status: 500 });
   }
 };
+export const GET = async (req: NextRequest, res: NextResponse) => {
+  let issues;
+  try {
+    // node caching added for better UI Experience
+    if (nodeCache.has("issues")) {
+      issues = nodeCache.get("issues")!;
+    } else {
+      issues = await prisma.issue.findMany();
+      nodeCache.set("issues", issues);
+    }
+
+    return NextResponse.json(issues);
+  } catch (error) {
+    return NextResponse.json(error, { status: 500 });
+  }
+};

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { IssueType } from "@/utils/types";
 
 const PreviousIssueLayout = () => {
-  const { data, error, loading } = useFetch("/api/get-issues");
+  const { data, error, loading } = useFetch("/api/issues");
   if (loading) {
     return (
       <>

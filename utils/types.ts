@@ -1,3 +1,5 @@
+import { Order } from "@prisma/client";
+
 export type ValidationForm = {
   title: string;
   description: string;
@@ -18,3 +20,4 @@ export type TypeChartPrority = Array<{
   order: string;
   count: number;
 }>;
+export type ChartIssueCount = Array<{ order: Order; count: number }>;

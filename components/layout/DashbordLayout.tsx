@@ -11,7 +11,7 @@ const DashbordLayout = ({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  const { data, error, loading } = useFetch("/api/get-issues");
+  const { data, error, loading } = useFetch("/api/issues");
 
   // Display data by filtering Prority else display all data
   const displayDataByFilterPrority = (

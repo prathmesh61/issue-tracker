@@ -1,5 +1,4 @@
 "use client";
-import { useFetch } from "@/hooks/useFetch";
 import {
   BarChart,
   Bar,
@@ -10,19 +9,25 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import ChartSpinner from "../common/ChartSpinner";
 import IssueProrityCountBox from "../common/IssueProrityCountBox";
+import { getIssueCount } from "@/utils/api-request";
+import { useEffect, useState } from "react";
+import { ChartIssueCount } from "@/utils/types";
 
 const ChartLayout = () => {
-  const { data: count, loading } = useFetch("/api/issue-count");
+  const [count, setCount] = useState<ChartIssueCount | undefined>();
 
-  if (loading) {
-    return (
-      <>
-        <ChartSpinner />
-      </>
-    );
-  }
+  useEffect(() => {
+    const issueCountFun = async () => {
+      const data = await getIssueCount();
+      // Check if data is not void before setting the count
+      if (data) {
+        setCount(data);
+      }
+    };
+    issueCountFun();
+  }, []);
+
   return (
     <section className="w-full h-full flex flex-col  gap-5">
       {/* @ts-ignore */}
