@@ -4,10 +4,11 @@ import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import DropDown from "../common/Dropdown";
+
 import Input from "../common/Input";
 import Textarea from "../common/Textarea";
 import Button from "../common/Button";
+import Dropdown from "../common/Dropdown";
 
 const FormLayout = () => {
   const { user } = useUser();
@@ -52,7 +53,7 @@ const FormLayout = () => {
         placeholder="give detail description for bug..."
         setvalue={setDescription}
       />
-      <DropDown setvalue={setPrority} />
+      <Dropdown setvalue={setPrority} />
       <Input
         lable="Link"
         placeholder="www.buglink.com"
