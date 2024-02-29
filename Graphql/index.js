@@ -1,8 +1,11 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
 import axios from "axios";
+
+// ignore prisma
+const prisma = new PrismaClient();
+
 // A schema is a collection of type definitions (hence "typeDefs")
 const typeDefs = `#graphql
  # This "Issue" type shape 
@@ -22,7 +25,7 @@ const typeDefs = `#graphql
 type Query {
     issues: [Issue]
     issueById(id:Int!):Issue
-    allIssueByUser(id:Int!):[Issue]
+    issueByUserEmail(email:String!):[Issue]
     issuesByOrder(order:String!):[Issue]
   }
 `;
@@ -30,7 +33,8 @@ type Query {
 // Resolvers define how to fetch the types defined in your schema.
 const resolvers = {
   Query: {
-    issues: async () => await prisma.issue.findMany(),
+    issues: async () =>
+      (await axios.get("http://localhost:3000/api/get-issues")).data,
     issueById: async (_parent, args) => {
       return await prisma.issue.findUnique({
         where: {
@@ -38,30 +42,29 @@ const resolvers = {
         },
       });
     },
-    allIssueByUser: async (_parent, args) => {
-      return await prisma.issue.findFirst({
+    issueByUserEmail: async (_parent, args) => {
+      return await prisma.issue.findMany({
         where: {
-          id: args.id,
+          email: args.email,
         },
         select: {
-          email,
-          title,
-          description,
-          link,
-          id,
-          order,
+          email: true,
+          title: true,
+          order: true,
         },
       });
     },
     issuesByOrder: async (_parent, args) => {
-      return await prisma.issue.findUnique({
+      return await prisma.issue.findMany({
         where: {
           order: args.order,
         },
         select: {
-          order,
-          title,
-          description,
+          email: true,
+          title: true,
+          link: true,
+          id: true,
+          order: true,
         },
       });
     },

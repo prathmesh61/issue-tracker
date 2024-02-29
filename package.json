@@ -6,15 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "graph": "node Graphql/index.js",
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/server": "^4.10.0",
     "@clerk/nextjs": "^4.25.4",
     "@hookform/resolvers": "^3.3.2",
     "@prisma/client": "^5.4.2",
     "axios": "^1.5.1",
-    "graphql": "^16.8.1",
     "next": "13.5.4",
     "node-cache": "^5.1.2",
     "react": "^18",
@@ -25,10 +24,13 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@apollo/server": "^4.10.0",
+    "@playwright/test": "^1.42.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
+    "graphql": "^16.8.1",
     "postcss": "^8",
     "prisma": "^5.4.2",
     "tailwindcss": "^3",
