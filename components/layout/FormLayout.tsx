@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import Input from "@/components/common/Input";
-import Button from "@/components/common/Button";
-import Textarea from "@/components/common/Textarea";
-import Dropdown from "@/components/common/Dropdown";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import DropDown from "../common/Dropdown";
+import Input from "../common/Input";
+import Textarea from "../common/Textarea";
+import Button from "../common/Button";
 
 const FormLayout = () => {
   const { user } = useUser();
@@ -52,7 +52,7 @@ const FormLayout = () => {
         placeholder="give detail description for bug..."
         setvalue={setDescription}
       />
-      <Dropdown setvalue={setPrority} />
+      <DropDown setvalue={setPrority} />
       <Input
         lable="Link"
         placeholder="www.buglink.com"
